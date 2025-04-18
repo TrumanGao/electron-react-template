@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/TrumanGao/electron-react-template"
+    "url": "https://github.com/TrumanGao/electron-template"
   },
   "main": "./dist/main.js",
   "scripts": {
