@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+name = "tuna"
+verify_ssl = true
+
+[[source]]
+url = "https://pypi.org/simple"
+name = "pypi"
+verify_ssl = true
+
+[packages]
+
+[dev-packages]
+pyinstaller = "==6.13.0"
+python-minifier = "==2.11.3"
+
+[requires]
+python_full_version = "3.8.20"

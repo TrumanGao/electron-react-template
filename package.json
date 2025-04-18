@@ -1,0 +1,57 @@
+{
+  "name": "electron-template",
+  "private": true,
+  "version": "1.0.0",
+  "author": {
+    "name": "TrumanGao"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrumanGao/electron-react-template"
+  },
+  "main": "./dist/main.js",
+  "scripts": {
+    "setup:win32": "npm install && electron-rebuild --arch=ia32",
+    "setup:win64": "npm install && electron-rebuild --arch=x64",
+    "setup:mac_intel": "npm install && electron-rebuild --arch=x64",
+    "setup:mac_arm": "npm install && electron-rebuild --arch=arm64",
+    "compile": "node ./script/rimraf.js ./dist && tsc && node ./script/post-compile.js",
+    "dev": "npm run compile && cross-env MODE=DEVELOPMENT electron --inspect ./dist/main.js",
+    "dev:win": "npm run dev & start chrome chrome://inspect/#devices",
+    "dev:mac": "npm run dev & open -a 'Google Chrome' chrome://inspect/#devices",
+    "build:win": "npm run compile && node ./script/rimraf.js ./dist-win && electron-builder --win --config ./builder/builder.config.js && node ./script/post-build.js",
+    "build:mac": "npm run compile && node ./script/rimraf.js ./dist-mac && electron-builder --mac --config ./builder/builder.config.js && node ./script/post-build.js",
+    "clean": "node ./script/rimraf.js ./dist ./dist-win ./dist-mac && node ./script/rimraf.js ./node_modules",
+    "format": "prettier --write '**/*'",
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major",
+    "update:trumangao": "npm install -S trumangao-utils@latest",
+    "update:all": "npm install -S axios@latest cors@latest electron-log@latest electron-updater@latest express@latest fs-extra@latest js-yaml@latest trumangao-utils@latest && npm install -D @types/cors@latest @types/express@latest @types/js-yaml@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest cross-env@latest electron-builder@latest eslint@latest prettier@latest rimraf@latest typescript@latest"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "cors": "^2.8.5",
+    "electron-log": "^5.3.3",
+    "electron-updater": "^6.6.2",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "js-yaml": "^4.1.0",
+    "trumangao-utils": "^2.3.6"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "3.2.13",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/js-yaml": "^4.0.9",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "@typescript-eslint/parser": "^8.30.1",
+    "cross-env": "^7.0.3",
+    "electron": "22.3.27",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.24.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  }
+}

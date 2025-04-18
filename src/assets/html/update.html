@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UPDATE</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+      }
+      progress {
+        flex: 1 0;
+      }
+    </style>
+  </head>
+  <body>
+    <progress id="update-progress" value="0" max="100"></progress>
+    <script>
+      const { ipcRenderer } = require("electron");
+      ipcRenderer.on("download-progress_percent", (e, percent) => {
+        const updateDom = document.getElementById("update-progress");
+        if (updateDom) {
+          updateDom.value = percent;
+        }
+      });
+    </script>
+  </body>
+</html>
